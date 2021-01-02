@@ -1,0 +1,8 @@
+#!/bin/sh
+TMPFILE=pronunciation.wav
+OFILE=pronunciation.opus
+cat README.md | head -n 2 | tail -n 1 | cut -d\< -f 1 | \
+        espeak-ng -g 40 -v ja -w "$TMPFILE" &&\
+    opusenc "$TMPFILE" "$OFILE" &&\
+    rm -f "$TMPFILE"
+
